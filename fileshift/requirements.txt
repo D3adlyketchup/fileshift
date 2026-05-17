@@ -1,0 +1,12 @@
+# FileShift — Python dependencies
+# Install with:  pip install -r requirements.txt
+
+customtkinter>=5.2.2
+Pillow>=10.0.0
+moviepy>=1.0.3
+pdf2image>=1.16.3
+python-pptx>=0.6.21
+pyinstaller>=6.0.0
+
+# Optional but recommended for drag-and-drop support:
+# tkinterdnd2>=0.3.0
