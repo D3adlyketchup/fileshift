@@ -3,17 +3,20 @@
 #   pyinstaller fileshift.spec
 
 import sys
+import customtkinter
 from pathlib import Path
 
 block_cipher = None
+
+# Dynamically find customtkinter — works in venv AND system/CI installs
+ctk_path = str(Path(customtkinter.__file__).parent)
 
 a = Analysis(
     ['main.py'],
     pathex=[str(Path('.').resolve())],
     binaries=[],
     datas=[
-        # Include customtkinter theme assets
-        ('venv/Lib/site-packages/customtkinter', 'customtkinter'),
+        (ctk_path, 'customtkinter'),
     ],
     hiddenimports=[
         'customtkinter',
@@ -58,11 +61,11 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=False,          # No console window
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=None,              # Replace with 'assets/icon.ico' if you have one
+    icon=None,
 )
